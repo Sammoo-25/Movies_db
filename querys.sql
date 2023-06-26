@@ -36,4 +36,6 @@ select name
 from Movies mv
 left join genres_movie gm ON gm.movie_id = mv.movie_id
 left join genres ON genres.genre_id = gm.genre_id
-where genres.genre = 'Comedy'
+left join user_comm ucom ON ucom.movie_id = mv.movie_id
+left join "comments" cm ON cm.comment_id = ucom.comment_id
+where cm."comment" is not null and genres.genre = 'Comedy'
